@@ -29,6 +29,64 @@ Permite realizar operações de CRUD:
 
 ---
 
+## ▶️ Como rodar o projeto
+
+### Pré-requisitos
+- Java 21 instalado
+- Maven instalado (ou usar o wrapper do projeto)
+
+---
+
+### 🔧 Passos
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/leandro-2025/API-produtos-java.git
+
+Entre na pasta do projeto:
+
+cd API-produtos-java
+
+Execute o projeto:
+
+./mvnw spring-boot:run
+
+Ou no Windows:
+
+mvnw.cmd spring-boot:run
+🌐 Acesse a API
+
+A aplicação estará disponível em:
+
+http://localhost:8080/produtos
+🧪 Testando a API
+
+Você pode utilizar ferramentas como:
+
+Insomnia
+Postman
+
+Exemplo de requisição:
+
+POST http://localhost:8080/produtos
+{
+  "nome": "Teclado",
+  "preco": 150,
+  "quantidade": 5
+}
+🗄️ Banco de Dados (H2)
+
+Acesse o console do banco:
+
+http://localhost:8080/h2-console
+
+Configuração padrão:
+
+JDBC URL: jdbc:h2:mem:testdb
+User: sa
+Password: (vazio)
+
 👨‍💻 Autor
 
 Leandro G. G. Eusébio
@@ -73,3 +131,5 @@ Leandro G. G. Eusébio
   "erro": "O nome não pode estar vazio",
   "data": "2026-04-21T..."
 }
+
+
