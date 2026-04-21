@@ -1,4 +1,7 @@
 # API de Produtos - Spring Boot
+👨‍💻 Autor
+
+Leandro G. G. Eusébio
 
 ## 📌 Descrição
 API REST desenvolvida com Spring Boot para gerenciamento de produtos.
@@ -86,10 +89,6 @@ Configuração padrão:
 JDBC URL: jdbc:h2:mem:testdb
 User: sa
 Password: (vazio)
-
-👨‍💻 Autor
-
-Leandro G. G. Eusébio
 
 ## 🔥 Endpoints
 
