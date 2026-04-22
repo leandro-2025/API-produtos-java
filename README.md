@@ -1,4 +1,4 @@
-# API de Produtos - Spring Boot
+# API REST para gerenciamento de produtos e pedidos, com relacionamento entre entidades. - Spring Boot
 👨‍💻 Autor
 
 Leandro G. G. Eusébio
@@ -12,6 +12,16 @@ Permite realizar operações de CRUD:
 - Buscar por ID
 - Atualizar produto
 - Deletar produto
+
+## 🔗 Relacionamento
+
+A API implementa um relacionamento ManyToMany entre Pedido e Produto:
+
+- Um pedido pode conter vários produtos
+- Um produto pode estar em vários pedidos
+
+Ao criar um pedido, a API recebe apenas os IDs dos produtos e busca os dados completos no banco antes de salvar.
+
 
 ---
 
@@ -130,5 +140,30 @@ Password: (vazio)
   "erro": "O nome não pode estar vazio",
   "data": "2026-04-21T..."
 }
+
+## 📦 Endpoints de Pedido
+
+### 📌 Criar pedido  
+`POST /pedidos`
+
+### 📌 Listar pedidos  
+`GET /pedidos`
+
+## 🧪 Exemplo de criação de pedido
+
+```json
+{
+  "cliente": "Leandro",
+  "produtos": [
+    { "id": 1 },
+    { "id": 2 }
+  ]
+}
+
+```md
+## 💡 Observação
+
+Ao criar um pedido, a API não salva apenas os IDs dos produtos.  
+Ela busca os produtos no banco de dados para garantir que os dados estejam completos e consistentes.
 
 
