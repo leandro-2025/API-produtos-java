@@ -1,27 +1,13 @@
-# API REST para gerenciamento de produtos e pedidos, com relacionamento entre entidades. - Spring Boot
-👨‍💻 Autor
+# API de Produtos e Pedidos - Spring Boot
+
+🔥 Autor
 
 Leandro G. G. Eusébio
 
 ## 📌 Descrição
-API REST desenvolvida com Spring Boot para gerenciamento de produtos.
+API REST desenvolvida com Spring Boot para gerenciamento de produtos e pedidos.
 
-Permite realizar operações de CRUD:
-- Criar produto
-- Listar produtos
-- Buscar por ID
-- Atualizar produto
-- Deletar produto
-
-## 🔗 Relacionamento
-
-A API implementa um relacionamento ManyToMany entre Pedido e Produto:
-
-- Um pedido pode conter vários produtos
-- Um produto pode estar em vários pedidos
-
-Ao criar um pedido, a API recebe apenas os IDs dos produtos e busca os dados completos no banco antes de salvar.
-
+Permite realizar operações de CRUD de produtos e também a criação de pedidos com múltiplos produtos associados.
 
 ---
 
@@ -35,91 +21,55 @@ Ao criar um pedido, a API recebe apenas os IDs dos produtos e busca os dados com
 ---
 
 ## 📂 Estrutura do Projeto
-- Controller → recebe requisições HTTP  
-- Service → lógica de negócio  
-- Repository → acesso ao banco  
-- Exception → tratamento de erros  
+- **Controller** → recebe requisições HTTP
+- **Service** → contém a lógica de negócio
+- **Repository** → acesso ao banco de dados
+- **Model** → representa as entidades
+- **Exception** → tratamento global de erros
 
 ---
 
-## ▶️ Como rodar o projeto
+## 🔗 Relacionamento
 
-### Pré-requisitos
-- Java 21 instalado
-- Maven instalado (ou usar o wrapper do projeto)
+A API implementa um relacionamento **ManyToMany** entre Pedido e Produto:
+
+- Um pedido pode conter vários produtos  
+- Um produto pode estar em vários pedidos  
+
+Ao criar um pedido, a API recebe apenas os IDs dos produtos e busca os dados completos no banco antes de salvar.
 
 ---
 
-### 🔧 Passos
+## 🔥 Endpoints de Produto
 
-Clone o repositório:
-
-```bash
-git clone https://github.com/leandro-2025/API-produtos-java.git
-
-Entre na pasta do projeto:
-
-cd API-produtos-java
-
-Execute o projeto:
-
-./mvnw spring-boot:run
-
-Ou no Windows:
-
-mvnw.cmd spring-boot:run
-🌐 Acesse a API
-
-A aplicação estará disponível em:
-
-http://localhost:8080/produtos
-🧪 Testando a API
-
-Você pode utilizar ferramentas como:
-
-Insomnia
-Postman
-
-Exemplo de requisição:
-
-POST http://localhost:8080/produtos
-{
-  "nome": "Teclado",
-  "preco": 150,
-  "quantidade": 5
-}
-🗄️ Banco de Dados (H2)
-
-Acesse o console do banco:
-
-http://localhost:8080/h2-console
-
-Configuração padrão:
-
-JDBC URL: jdbc:h2:mem:testdb
-User: sa
-Password: (vazio)
-
-## 🔥 Endpoints
-
-### 📌 Criar produto
+📌 Criar produto  
 `POST /produtos`
 
-### 📌 Listar produtos
+📌 Listar produtos  
 `GET /produtos`
 
-### 📌 Buscar por ID
+📌 Buscar por ID  
 `GET /produtos/{id}`
 
-### 📌 Atualizar produto
+📌 Atualizar produto  
 `PUT /produtos/{id}`
 
-### 📌 Deletar produto
+📌 Deletar produto  
 `DELETE /produtos/{id}`
 
 ---
 
-## 🧪 Exemplo JSON
+## 📦 Endpoints de Pedido
+
+📌 Criar pedido  
+`POST /pedidos`
+
+📌 Listar pedidos  
+`GET /pedidos`
+
+---
+
+## 🧪 Exemplo JSON - Produto
 
 ```json
 {
@@ -127,31 +77,7 @@ Password: (vazio)
   "preco": 100,
   "quantidade": 10
 }
-⚠️ Tratamento de Erros
-❌ Produto não encontrado (404)
-{
-  "status": 404,
-  "erro": "Produto não encontrado",
-  "data": "2026-04-21T..."
-}
-❌ Erro de validação (400)
-{
-  "status": 400,
-  "erro": "O nome não pode estar vazio",
-  "data": "2026-04-21T..."
-}
-
-## 📦 Endpoints de Pedido
-
-### 📌 Criar pedido  
-`POST /pedidos`
-
-### 📌 Listar pedidos  
-`GET /pedidos`
-
-## 🧪 Exemplo de criação de pedido
-
-```json
+## 🧪 Exemplo JSON - Pedido
 {
   "cliente": "Leandro",
   "produtos": [
@@ -159,11 +85,32 @@ Password: (vazio)
     { "id": 2 }
   ]
 }
+⚠️ Tratamento de Erros
+Produto não encontrado
+{
+  "status": 404,
+  "erro": "Produto não encontrado",
+  "data": "2026-04-21T..."
+}
+Erro de validação
+{
+  "status": 400,
+  "erro": "O nome não pode estar vazio",
+  "data": "2026-04-21T..."
+}
+💡 Observação
 
-```md
-## 💡 Observação
-
-Ao criar um pedido, a API não salva apenas os IDs dos produtos.  
+Ao criar um pedido, a API não salva apenas os IDs dos produtos.
 Ela busca os produtos no banco de dados para garantir que os dados estejam completos e consistentes.
+
+🚀 Como rodar o projeto
+git clone https://github.com/leandro-2025/API-produtos-java.git
+cd produtos
+./mvnw spring-boot:run
+
+A API estará disponível em:
+
+http://localhost:8080
+
 
 
