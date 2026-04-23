@@ -26,6 +26,10 @@ public class PedidoService {
                 .map(p -> produtoRepository.findById(p.getId())
                         .orElseThrow(() -> new RuntimeException("Produto não encontrado")))
                 .toList();
+        Double total = produtosCompleto.stream()
+                        .mapToDouble(p-> p.getPreco() * p.getQuantidade())
+                        .sum();
+        pedido.setTotal(total);
 
         pedido.setProdutos(produtosCompleto);
 

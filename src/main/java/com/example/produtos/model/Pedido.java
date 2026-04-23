@@ -12,6 +12,8 @@ public class Pedido {
 
     private String cliente;
 
+    private double total;
+
     @ManyToMany
     private List<Produto> produtos;
 
@@ -25,6 +27,14 @@ public class Pedido {
 
     public  void setCliente(String cliente) {
         this.cliente = cliente;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getTotal() {
+        return total;
     }
 
     public List<Produto> getProdutos() {
