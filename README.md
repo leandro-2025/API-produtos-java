@@ -1,4 +1,4 @@
-# API de Produtos e Pedidos - Spring Boot
+# API de Produtos e Pedidos e que calcula o valor total desses pedidos - Spring Boot
 
 🔥 Autor
 
@@ -7,7 +7,7 @@ Leandro G. G. Eusébio
 ## 📌 Descrição
 API REST desenvolvida com Spring Boot para gerenciamento de produtos e pedidos.
 
-Permite realizar operações de CRUD de produtos e também a criação de pedidos com múltiplos produtos associados.
+Permite realizar operações de CRUD de produtos e também a criação de pedidos com múltiplos produtos associados, e calcula o valor total.
 
 ---
 
@@ -37,6 +37,14 @@ A API implementa um relacionamento **ManyToMany** entre Pedido e Produto:
 - Um produto pode estar em vários pedidos  
 
 Ao criar um pedido, a API recebe apenas os IDs dos produtos e busca os dados completos no banco antes de salvar.
+
+---
+
+## 💰 Cálculo de Total
+
+O total do pedido é calculado automaticamente no backend com base no preço e quantidade dos produtos.
+
+Isso garante segurança e evita manipulação de valores pelo cliente.
 
 ---
 
